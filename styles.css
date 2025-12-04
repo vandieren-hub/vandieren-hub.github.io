@@ -1,0 +1,444 @@
+/* =========================
+   BASE / RESET
+   ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background-color: #ffffff;
+  color: #111111;
+  line-height: 1.6;
+}
+
+/* Links */
+
+a {
+  color: #111111;
+  text-decoration: none;
+  position: relative;
+  transition: opacity 0.18s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* Layout wrapper */
+
+body {
+  padding: 1.75rem 1.5rem 3rem;
+}
+
+@media (min-width: 880px) {
+  body {
+    padding: 2.5rem 3.5rem 4rem;
+  }
+}
+
+/* =========================
+   HEADER (ZEN, MINIMAL)
+   ========================= */
+
+.header {
+  max-width: 980px;
+  margin: 0 auto 3rem auto;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo: extremely simple wordmark */
+
+.logo {
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.logo span {
+  margin-left: 0.15rem;
+}
+
+/* Nav */
+
+.nav {
+  display: flex;
+  gap: 1.75rem;
+  font-size: 0.9rem;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.28rem;
+  width: 0;
+  height: 1px;
+  background-color: #111111;
+  transition: width 0.18s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* Menu button (mobile hotdog) */
+
+.menu-btn {
+  display: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  width: 24px;
+  height: 18px;
+  position: relative;
+}
+
+.menu-btn span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #111111;
+  border-radius: 999px;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.menu-btn span:nth-child(1) {
+  top: 0;
+}
+
+.menu-btn span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu-btn span:nth-child(3) {
+  bottom: 0;
+}
+
+/* Mobile header behaviour */
+
+@media (max-width: 720px) {
+  .nav {
+    position: absolute;
+    right: 1.5rem;
+    top: 4.1rem;
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 999px;
+    padding: 0.55rem 0.85rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+    display: none;
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+
+  body.nav-open .nav {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  /* transform into cross when open */
+  body.nav-open .menu-btn span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  body.nav-open .menu-btn span:nth-child(2) {
+    opacity: 0;
+  }
+
+  body.nav-open .menu-btn span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* Keep nav inline and show on desktop */
+
+@media (min-width: 721px) {
+  .nav {
+    position: static;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+}
+
+/* =========================
+   HERO — ULTRA SIMPLE / ZEN
+   ========================= */
+
+.hero {
+  max-width: 980px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.hero-content {
+  border-top: 1px solid #eeeeee;
+  padding-top: 2.5rem;
+}
+
+.hero-title {
+  font-size: clamp(2.3rem, 4vw, 3rem);
+  line-height: 1.2;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
+}
+
+.highlight {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.hero-subtitle {
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+  color: #555555;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Buttons */
+
+.btn-primary,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.35rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  border: 1px solid #111111;
+  background-color: #111111;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, transform 0.08s ease;
+}
+
+.btn-primary:hover,
+.btn-ghost:hover {
+  transform: translateY(-1px);
+  opacity: 1;
+}
+
+/* ghost: inverted */
+
+.btn-ghost {
+  background-color: #ffffff;
+  color: #111111;
+}
+
+/* =========================
+   SECTIONS
+   ========================= */
+
+.section {
+  max-width: 980px;
+  margin: 0 auto 3rem auto;
+  padding-top: 2rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.section-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.section-text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #444444;
+}
+
+/* =========================
+   TIMELINE (EXPERIENCE)
+   ========================= */
+
+.timeline {
+  margin-top: 1.5rem;
+  border-left: 1px solid #e6e6e6;
+  padding-left: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.timeline .item {
+  position: relative;
+}
+
+.timeline .item::before {
+  content: "";
+  position: absolute;
+  left: -1.1rem;
+  top: 0.3rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background-color: #111111;
+}
+
+.timeline h3 {
+  margin: 0 0 0.15rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.timeline .meta {
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  color: #777777;
+}
+
+.timeline p {
+  margin: 0;
+  font-size: 0.94rem;
+  color: #444444;
+}
+
+/* =========================
+   CARDS (PROJECTS)
+   ========================= */
+
+.cards {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.card {
+  border-radius: 16px;
+  border: 1px solid #f0f0f0;
+  padding: 1.1rem 1.25rem;
+}
+
+.card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.94rem;
+  color: #444444;
+}
+
+@media (min-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* =========================
+   CONTACT
+   ========================= */
+
+#contact .btn-primary {
+  margin-top: 1.5rem;
+}
+
+/* =========================
+   SECRET EASTER EGG
+   ========================= */
+
+/* Tiny dot trigger — subtle, almost invisible */
+
+.secret-trigger {
+  position: fixed;
+  right: 1.6rem;
+  bottom: 1.6rem;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #cccccc;
+  user-select: none;
+  transition: color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.5;
+}
+
+.secret-trigger:hover {
+  color: #999999;
+  opacity: 0.9;
+}
+
+/* Secret section (philosophy mode) */
+
+.secret-section {
+  max-width: 980px;
+  margin: 3rem auto 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid #f0f0f0;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.secret-section h2 {
+  margin: 0 0 0.7rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.secret-section p {
+  margin: 0;
+  font-size: 0.94rem;
+  color: #444444;
+}
+
+/* Visible modifier (added by JS) */
+
+.secret-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.secret-trigger.is-found {
+  color: #111111;
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer {
+  max-width: 980px;
+  margin: 3rem auto 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f5f5f5;
+  font-size: 0.85rem;
+  color: #777777;
+  text-align: left;
+}
