@@ -1,0 +1,32 @@
+# _config.yml
+
+# --- Site settings ---
+title: "Richard van Dieren"
+description: "Digital problem solver, systems thinker, and builder of elegant solutions."
+# For a *user* site (richardvd.github.io), use your GitHub Pages root URL:
+url: "https://richardvd.github.io"
+# For a *project* site (e.g. richardvd.github.io/brand), set baseurl to "/brand"
+baseurl: ""  # leave empty for user/organisation site
+
+# --- Build settings ---
+theme: null           # disable default Jekyll themes (we use custom HTML/CSS)
+markdown: kramdown
+highlighter: none
+
+# Ensure GitHub Pages-compatible plugins only
+plugins: []
+
+# --- Exclusions (optional, keeps build clean) ---
+exclude:
+  - README.md
+  - node_modules
+  - package.json
+  - package-lock.json
+
+# --- Defaults (optional, safe to leave as-is) ---
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: null
+      
